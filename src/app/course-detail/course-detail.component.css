@@ -1,0 +1,7 @@
+.article-title {
+    cursor: pointer;
+}
+
+.article-active {
+    background-color: lightgrey;
+}

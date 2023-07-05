@@ -1,0 +1,7 @@
+{
+    "title": "Learn2Build",
+    "org": "spinsoft",
+    "API_URL": "https://api.learn2build.in/api/",
+    "COURSETRACKER_API_URL":"https://coursetracker-courses.s3.ap-south-1.amazonaws.com/api/",
+    "logoUrl": "spinsoft_logo.jpg"
+}

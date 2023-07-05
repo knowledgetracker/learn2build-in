@@ -1,0 +1,25 @@
+<div class="page-content" *ngIf="article">
+
+    <!-- <h3 class="page-title"> {{article.title}} </h3>       -->
+
+    <!--
+  <div [innerHTML]="content | safeHTML">
+
+  </div> -->
+    <div class="embed-responsive  position-relative w-100 d-block overflow-hidden p-0" style="height: 600px;" *ngIf="article.content_type=='blog'">
+        <iframe class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100" [src]="article.url | safe"></iframe>
+    </div>
+
+    <div class="embed-responsive  position-relative w-100 d-block overflow-hidden p-0" style="height: 600px;" *ngIf="article.content_type=='slides'">
+      <iframe class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" [src]="article.url | safe"></iframe>
+  </div>
+
+  <div class="embed-responsive  position-relative w-100 d-block overflow-hidden p-0" style="height: 600px;" *ngIf="article.content_type=='code'">
+    <iframe class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100"  [src]="article.url | safe"></iframe>
+</div>
+
+
+    <br/>
+
+
+</div>

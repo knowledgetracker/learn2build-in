@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~ngx-toastr/toastr';
+.nav-link {
+    color: white !important;
+}
+
+a.navbar-brand {
+    color: white !important;
+    margin-right: 10px !important;
+}
+
+a[routerLink] {
+    cursor: pointer !important;
+}
+
+.article-title {
+    cursor: pointer;
+}

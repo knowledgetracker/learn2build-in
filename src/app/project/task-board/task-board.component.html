@@ -1,0 +1,43 @@
+<div class="container m-3">
+    <div class="row mb-4">
+        <div class="col">
+            <h2 class="mb-0">Project - {{project?.name}}</h2>
+        </div>
+        <div class="col-2">
+            <a routerLink="../">Features</a>
+        </div>
+    </div>
+    <div *ngIf="project">
+
+        <div class="row">
+            <div class="col-3" *ngFor="let status of statusList" style="border: 5px;">
+                <h3 class="text-center">{{status}}
+                    <span class="badge bg-success">{{features[status]? features[status].length: 0}}</span> &nbsp;
+                </h3>
+                <div class="row">
+                    <div class="" *ngFor="let feature of features[status]">
+
+                        <div class="card mb-2 card-hover">
+                            <div class="d-flex justify-content-between align-items-center p-4">
+                                <div class="d-flex">
+                                    <div class="ms-3">
+                                        <h4 class="mb-1">
+                                            {{feature.name}}
+                                        </h4>
+
+                                        <span class="badge bg-success">{{feature.modifiedDate |date:'dd-MMM'}}</span> &nbsp;
+                                        <span class="badge bg-secondary"> 4 hrs</span>&nbsp;
+                                        <span class="badge bg-danger" *ngIf="feature.priority==1"> HIGH </span>
+                                        <span class="badge bg-warning" *ngIf="feature.priority==2"> Medium </span>
+                                        <span class="badge bg-info" *ngIf="feature.priority==3"> Low </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

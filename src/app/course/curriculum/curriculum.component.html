@@ -1,0 +1,128 @@
+<div class="container my-3">
+    <div class="row mb-4">
+        <div class="col">
+            <h2 class="mb-0">Course - {{course?.title}}
+
+            </h2>
+
+
+        </div>
+        <div class="col" *ngIf="userId && enrolled">
+            <span>
+            <small class="badge bg-success">Enrolled </small> &nbsp;
+            <small class="badge bg-info"> {{course?.noOfTopics}} Topics </small>
+            </span>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn btn-success btn-sm" *ngIf="userId && !enrolled" (click)="enroll()">Enroll</button>
+            <!-- <button type="button" [disabled]="completed" class="btn btn-info btn-sm" *ngIf="userId && enrolled">
+              Enrolled</button> -->
+        </div>
+    </div>
+    <div class="row" data-masonry='{"percentPosition": true }' *ngIf="course">
+        <div class="col-xl-4 col-lg-6 col-md-6 col-12" *ngFor="let module of course.modules">
+
+            <div class="card mb-4 card-hover">
+                <div class="d-flex justify-content-between align-items-center p-4">
+                    <div class="d-flex">
+
+
+
+                        <div class="ms-3">
+                            <h4 class="mb-1">
+
+                                {{module.name}} ( <span class="text-dark fw-medium">
+                  {{module.topics.length}} Topics</span> )
+
+                            </h4>
+
+                            <ul>
+                                <ng-container *ngFor="let topic of module.topics">
+                                    <li *ngIf="!userCourse">
+                                        <span [style.color]="getColor(topic)">
+                      {{topic.name}}</span>
+
+                                    </li>
+                                    <li *ngIf="userCourse" style="list-style-type: none;">
+                                        <input type="checkbox" *ngIf="topic.status!='C'" [(ngModel)]="topic.isChecked" (change)="updateStatus(topic)" />
+                                        <input type="checkbox" *ngIf="topic.status=='C'" disabled=true [(ngModel)]="topic.status" [checked]="topic.status=='C'" value="C" (change)="updateStatus(topic)" />
+
+                                        <span [style.color]=" getColor(topic) ">
+                      {{topic.name}}</span>
+
+                                    </li>
+                                </ng-container>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--
+
+<div class="mt-3 course-container ">
+  <div class="container-fluid ">
+      <div class="row ">
+          <div class="col-12 ">
+              <div class="tab-content content " id="course-tabContent ">
+                  <div class="tab-pane fade show active " id="course-intro " role="tabpanel " aria-labelledby="course-intro-tab ">
+                      <div class="d-flex align-items-center justify-content-between mb-4 ">
+                          <div>
+                              <h3 class=" mb-0 text-truncate-line-2 ">Slides </h3>
+                          </div>
+                      </div>
+
+                      <div *ngIf="project " class="embed-responsive position-relative d-block overflow-hidden p-0 " style="height: 600px; ">
+                          <iframe *ngIf="project.pptLink " [src]="project.pptLink | safe " frameborder="0 " width="960 " height="569 " allowfullscreen="true " mozallowfullscreen="true " webkitallowfullscreen="true "></iframe>
+                           <iframe class="position-absolute top-0 end-0 start-0 end-0 bottom-0 h-100 w-100 " src="https://www.youtube.com/embed/PkZNo7MFNFg "></iframe>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="card course-sidebar " id="courseAccordion " *ngIf="project ">
+
+  <ul class="list-group list-group-flush course-list ">
+      <li class="list-group-item ">
+          <h4 class="mb-0 "> Project : {{project.name}}</h4>
+      </li>
+
+      <li class="list-group-item " *ngFor="let module of project.modules;let i=index ">
+
+          <a class="d-flex align-items-center text-inherit text-decoration-none h4 mb-0 " data-bs-toggle="collapse " href="#course_{{i}} " role="button " aria-expanded="false " aria-controls="courseTwo ">
+              <div class="me-auto ">
+                  {{module.name}} ( {{module.topics.length}} )
+              </div>
+
+              <span class="chevron-arrow ms-4 ">
+          <i class="fe fe-chevron-down fs-4 "></i>
+        </span>
+          </a>
+          <div class="collapse show " id="course_{{i}} " data-bs-parent="#courseAccordion ">
+              <div class="py-4 nav " id="course-tab-{{i}} " role="tablist " aria-orientation="vertical " style="display: inherit; ">
+                  <a class="mb-2 d-flex justify-content-between align-items-center text-decoration-none " id="course-intro-tab " data-bs-toggle="pill " href=" " role="tab " aria-controls="course-intro " aria-selected="true " *ngFor="let topic of module.topics ">
+                      <div class="text-truncate ">
+                          <span class="icon-shape bg-light text-primary icon-sm rounded-circle me-2 "><i
+                  class="fe fe-play fs-6 "></i></span>
+                          <span>{{topic.name}}</span>
+                      </div>
+                      <div class="text-truncate ">
+                          <span></span>
+                      </div>
+                  </a>
+
+              </div>
+          </div>
+      </li>
+  </ul>
+</div>
+-->

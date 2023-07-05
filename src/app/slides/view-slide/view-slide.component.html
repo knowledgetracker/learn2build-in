@@ -1,0 +1,51 @@
+<div class="container m-3">
+    <div class="row mb-4">
+        <div class="col">
+            <h2 class="mb-0">Slides - {{courseTitle}}</h2>
+        </div>
+    </div>
+    <div class="row" *ngIf="course">
+
+        <div class="col-2">
+            <div class="row">
+                <div class="row card mb-4 card-hover" *ngFor="let slide of course.slides; let i=index;">
+                    <div class="d-flex justify-content-between align-items-center p-4">
+                        <div class="d-flex">
+                            <div>
+                                <button type="button" (click)="selectSlide(i)">{{slide.title}} </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-10">
+            <!-- Card -->
+            <div class="card mb-4 card-hover">
+                <div class="d-flex justify-content-between align-items-center p-4">
+                    <div class="d-flex">
+                        <!--<a routerLink="/blog/{{slide.category}}">
+                            
+                             <img src="../assets/images/path/{{getCourseLogo(slide.course_name)}}" alt="" class="avatar-md" /></a> -->
+                        <div class="ms-3">
+                            <h4 class="mb-1">
+                                <a routerLink="{{slide.title}}" class="text-inherit">
+                                    {{slide.title}}
+                                </a>
+                            </h4>
+                            <p class="mb-0 fs-6">
+                                <iframe [src]="slide.link |safe" frameborder="0" width="960" height="569"
+                                    allowfullscreen="true" mozallowfullscreen="true"
+                                    webkitallowfullscreen="true"></iframe>
+                                <!-- <span class="me-2"><span class="text-dark fw-medium">{{slide.slides.length}}</span> Slides
+                                </span> -->
+                                <!-- <span><span class="text-dark fw-medium">34 </span> Hours
+                                </span> -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
