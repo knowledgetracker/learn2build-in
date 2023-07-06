@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: 'specializations', component: SpecializationListComponent },
   { path: 'specializations/:id', component: SpecializationCourseListComponent },
 
-  // {path:"users", component:UserListComponent},
+  {path:"users", component:UserListComponent},
   { path: "users/:id", component: ProfileComponent },
   { path: "course/:id", component: CurriculumComponent },
   { path: '', pathMatch: 'full', redirectTo: "blog" }
